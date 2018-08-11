@@ -1,7 +1,6 @@
 package data;
 
 import com.google.gson.annotations.SerializedName;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 
 public class Article {
     private int id, year_num, journal_id, is_isi, is_scopus, is_vci, is_international;

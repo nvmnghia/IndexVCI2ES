@@ -1,7 +1,6 @@
 package data;
 
 import config.Config;
-import indexer.Indexer;
 import util.DataUtl;
 import util.StringUtl;
 

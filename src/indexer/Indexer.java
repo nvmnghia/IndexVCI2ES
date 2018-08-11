@@ -51,19 +51,28 @@ public class Indexer {
         Config.DB.PASSWORD = cmd.getOptionValue("db_pass", Config.DB.PASSWORD);
         Config.DB.NAME = cmd.getOptionValue("db_name", Config.DB.NAME);
 
+        System.out.println("DB configuration:");
+        Field[] fields = Config.ES.class.getDeclaredFields();
+        Config.ES temp = new Config.ES();
+        for (Field f : fields) {
+            if (Modifier.isStatic(f.getModifiers())) {
+                System.out.println(f.getName() + ": " + f.get(temp).toString());
+            }
+        }
+
+        System.out.println("ES configuration:");
         Config.ES.HOST = cmd.getOptionValue("es_host", Config.ES.HOST);
         Config.ES.PORT = Integer.parseInt(cmd.getOptionValue("es_port", String.valueOf(Config.ES.PORT)));
         Config.ES.INDEX = cmd.getOptionValue("es_index", Config.ES.INDEX);
         Config.ES.BULK_SIZE = Integer.parseInt(cmd.getOptionValue("es_bulk_size", String.valueOf(Config.ES.BULK_SIZE)));
 
-        Field[] fields = Config.class.getDeclaredFields();
-        Config temp = new Config();
+        fields = Config.ES.class.getDeclaredFields();
+        Config.DB temp2 = new Config.DB();
         for (Field f : fields) {
             if (Modifier.isStatic(f.getModifiers())) {
-                System.out.println(f.getName() + ": " + f.get(temp).toString() );
+                System.out.println(f.getName() + ": " + f.get(temp2).toString());
             }
         }
-
     }
 
     private static void createIndexWithMappings() throws IOException {

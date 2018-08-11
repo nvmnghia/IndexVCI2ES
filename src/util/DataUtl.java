@@ -59,9 +59,6 @@ public class DataUtl {
         dataSource.setUser(Config.DB.USERNAME);
         dataSource.setPassword(Config.DB.PASSWORD);
 
-        System.out.println(dataSource.getURL());
-        System.out.println(dataSource.getUrl());
-
         return dataSource.getConnection();
     }
 
