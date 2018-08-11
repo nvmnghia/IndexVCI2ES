@@ -26,14 +26,6 @@ public class Author {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getOrganize_id() {
-        return organize_id;
-    }
-
     public void setOrganize_id(int organize_id) {
         this.organize_id = organize_id;
     }
@@ -46,20 +38,9 @@ public class Author {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getCitation_self_author() {
-        return citation_self_author;
-    }
-
-    public void setCitation_self_author(int citation_self_author) {
-        this.citation_self_author = citation_self_author;
     }
 
     /**

@@ -29,28 +29,12 @@ public class Organization {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int get_rgt() {
-        return _rgt;
-    }
-
     public void set_rgt(int _rgt) {
         this._rgt = _rgt;
     }
 
-    public int get_lft() {
-        return _lft;
-    }
-
     public void set_lft(int _lft) {
         this._lft = _lft;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
@@ -62,16 +46,8 @@ public class Organization {
         }
     }
 
-    public String getFullname() {
-        return fullname;
-    }
-
     public void setFullname(String fullname) {
         this.fullname = fullname;
-    }
-
-    public String getName_en() {
-        return name_en;
     }
 
     public void setName_en(String name_en) {
@@ -83,16 +59,8 @@ public class Organization {
         }
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Integer getParent_id() {
-        return parent_id;
     }
 
     public void setParent_id(Integer parent_id) {

@@ -4,8 +4,6 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import config.Config;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DataUtl {
     private static Connection connection = null;
@@ -13,10 +11,13 @@ public class DataUtl {
     static {
         try {
             connection = createNewConnection();
-            try (Statement stm = connection.createStatement()) {
-                stm.execute("SET GLOBAL group_concat_max_len=10240");
-                System.out.println("SET GLOBAL group_concat_max_len=10240");
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Statement stm = connection.createStatement()) {
+            stm.execute("SET GLOBAL group_concat_max_len=10240");
+            System.out.println("SET GLOBAL group_concat_max_len=10240");
         } catch (SQLException e) {
             System.err.println("CANNOT SET group_concat_max_len=10240");
             e.printStackTrace();
@@ -46,42 +47,6 @@ public class DataUtl {
 
         stm.executeQuery("USE " + dbName);
         return stm.executeQuery(query);
-    }
-
-    public static int insertAndGetID(String dbName, String query) throws SQLException {
-        Statement stm = getDBStatement();
-
-        stm.executeQuery("USE " + dbName);
-        return stm.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
-    }
-
-    public static void batchInsert(String dbName, List<String> insertQueries) throws SQLException {
-        Statement stm = getDBStatement();
-
-        stm.executeQuery("USE " + dbName);
-
-        for (String query : insertQueries) {
-            stm.addBatch(query);
-        }
-
-        stm.executeBatch();
-    }
-
-    public static int getAutoIncrementID(PreparedStatement pstm) throws SQLException {
-        ResultSet rs = pstm.getGeneratedKeys();
-        rs.next();
-        return rs.getInt(1);
-    }
-
-    public static List<Integer> getAutoIncrementIDs(PreparedStatement pstm) throws SQLException {
-        List<Integer> IDs = new ArrayList<Integer>();
-        ResultSet rs = pstm.getGeneratedKeys();
-
-        while (rs.next()) {
-            IDs.add(rs.getInt(1));
-        }
-
-        return IDs;
     }
 
     public static Connection createNewConnection() throws SQLException {
