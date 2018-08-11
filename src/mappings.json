@@ -1,0 +1,798 @@
+{
+    "mappings": {
+        "article": {
+            "properties": {
+                "abstract": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "aggs": {
+                    "properties": {
+                        "citations": {
+                            "properties": {
+                                "aggs": {
+                                    "properties": {
+                                        "per_year": {
+                                            "properties": {
+                                                "aggs": {
+                                                    "properties": {
+                                                        "total_cites": {
+                                                            "properties": {
+                                                                "sum": {
+                                                                    "properties": {
+                                                                        "field": {
+                                                                            "type": "text",
+                                                                            "fields": {
+                                                                                "keyword": {
+                                                                                    "type": "keyword",
+                                                                                    "ignore_above": 256
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "terms": {
+                                                    "properties": {
+                                                        "field": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword",
+                                                                    "ignore_above": 256
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "nested": {
+                                    "properties": {
+                                        "path": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword",
+                                                    "ignore_above": 256
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "article": {
+                    "properties": {
+                        "articles_authors_data": {
+                            "properties": {
+                                "name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "raw": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "email": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "id": {
+                            "type": "long"
+                        },
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                },
+                                "raw": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "organize_id": {
+                            "type": "long"
+                        }
+                    }
+                },
+                "articles_authors": {
+                    "type": "long"
+                },
+                "articles_authors_data": {
+                    "properties": {
+                        "citation_self_author": {
+                            "type": "long"
+                        },
+                        "email": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "id": {
+                            "type": "long"
+                        },
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            },
+                            "fielddata": true
+                        },
+                        "organize_id": {
+                            "type": "long"
+                        }
+                    }
+                },
+                "authors": {
+                    "type": "nested",
+                    "properties": {
+                        "citation_self_author": {
+                            "type": "long"
+                        },
+                        "email": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "id": {
+                            "type": "long"
+                        },
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "organize_id": {
+                            "type": "long"
+                        }
+                    }
+                },
+                "authors_full": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "citation_raw": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "citations": {
+                    "properties": {
+                        "authors": {
+                            "properties": {
+                                "affiliation": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword",
+                                            "ignore_above": 256
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword",
+                                            "ignore_above": 256
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "createdAt": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "hash": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "journalName": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "modifiedIn": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "number": {
+                            "type": "long"
+                        },
+                        "title": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "typeCitation": {
+                            "properties": {
+                                "citation_other": {
+                                    "type": "long"
+                                },
+                                "citation_scopus_isi": {
+                                    "type": "long"
+                                },
+                                "citation_self": {
+                                    "type": "long"
+                                },
+                                "citation_self_article": {
+                                    "type": "long"
+                                },
+                                "citation_self_journal": {
+                                    "type": "long"
+                                },
+                                "citation_vci": {
+                                    "type": "long"
+                                }
+                            }
+                        },
+                        "uri": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "volume": {
+                            "type": "long"
+                        },
+                        "year": {
+                            "type": "text",
+                            "fielddata": true
+                        }
+                    }
+                },
+                "citations_new": {
+                    "type": "nested",
+                    "properties": {
+                        "authors": {
+                            "properties": {
+                                "affiliation": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword",
+                                            "ignore_above": 256
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword",
+                                            "ignore_above": 256
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "createdAt": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "hash": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            },
+                            "fielddata": true
+                        },
+                        "journalName": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "modifiedIn": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "number": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "title": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "typeCitation": {
+                            "properties": {
+                                "citation_other": {
+                                    "type": "long"
+                                },
+                                "citation_scopus_isi": {
+                                    "type": "long"
+                                },
+                                "citation_self": {
+                                    "type": "long"
+                                },
+                                "citation_self_article": {
+                                    "type": "long"
+                                },
+                                "citation_self_journal": {
+                                    "type": "long"
+                                },
+                                "citation_vci": {
+                                    "type": "long"
+                                }
+                            }
+                        },
+                        "uri": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "volume": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "year": {
+                            "type": "long"
+                        }
+                    }
+                },
+                "citations_per_year": {
+                    "type": "nested",
+                    "properties": {
+                        "cite_count": {
+                            "type": "long"
+                        },
+                        "year": {
+                            "type": "long"
+                        }
+                    }
+                },
+                "cites_count": {
+                    "type": "long"
+                },
+                "doi": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "headers": {
+                    "type": "object"
+                },
+                "id": {
+                    "type": "long"
+                },
+                "is_international": {
+                    "type": "long"
+                },
+                "is_isi": {
+                    "type": "long"
+                },
+                "is_scopus": {
+                    "type": "long"
+                },
+                "is_vci": {
+                    "type": "long"
+                },
+                "journal_data": {
+                    "properties": {
+                        "description": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "id": {
+                            "type": "long"
+                        },
+                        "is_isi": {
+                            "type": "long"
+                        },
+                        "is_scopus": {
+                            "type": "long"
+                        },
+                        "is_vci": {
+                            "type": "long"
+                        },
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "name_en": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        }
+                    }
+                },
+                "journal_id": {
+                    "type": "long"
+                },
+                "keyword": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "language": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "number": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "organizes_data": {
+                    "properties": {
+                        "_lft": {
+                            "type": "long"
+                        },
+                        "_rgt": {
+                            "type": "long"
+                        },
+                        "address": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "id": {
+                            "type": "long"
+                        },
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "name_en": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "parent_id": {
+                            "type": "long"
+                        }
+                    }
+                },
+                "organizes_id": {
+                    "type": "long"
+                },
+                "original": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "reference": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "size": {
+                    "type": "long"
+                },
+                "slug": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "subjects": {
+                    "properties": {
+                        "id": {
+                            "type": "long"
+                        },
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        }
+                    }
+                },
+                "subjects_id": {
+                    "type": "long"
+                },
+                "title": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    },
+                    "fielddata": true
+                },
+                "volume": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "year": {
+                    "type": "long",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "year_num": {
+                    "type": "long"
+                }
+            }
+        },
+        "organize": {
+            "properties": {
+                "_lft": {
+                    "type": "long"
+                },
+                "_rgt": {
+                    "type": "long"
+                },
+                "address": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "fullname": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "id": {
+                    "type": "long"
+                },
+                "name": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "name_en": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "parent_id": {
+                    "type": "long"
+                }
+            }
+        },
+        "journal": {
+            "properties": {
+                "description": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "is_international": {
+                    "type": "long"
+                },
+                "is_isi": {
+                    "type": "long"
+                },
+                "is_scopus": {
+                    "type": "long"
+                },
+                "is_vci": {
+                    "type": "long"
+                },
+                "issn": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "name": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "name_en": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "slug": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
