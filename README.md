@@ -1,9 +1,9 @@
 # IndexVCI2ES
 
-# Run JAR
+## Run JAR
 The mappings.json file included with the JAR should not be modified :) create an issue if u want
 
-# Params
+## Params
 - db_host
 - db_port
 - db_name
@@ -13,3 +13,9 @@ The mappings.json file included with the JAR should not be modified :) create an
 - es_port
 - es_index
 - es_bulk_size
+
+| Params  | Meaning  | Default  |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
